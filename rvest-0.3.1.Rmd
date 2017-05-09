@@ -1,0 +1,31 @@
+---
+title: "Handling ugly HTML tables with rvest 0.3.1"
+output:
+  html_notebook: default
+---
+
+We will use the `rvest` library to read a HTML table exported from the [Statistical Office of Slovenia](http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=05N3218S&ti=&path=../Database/Dem_soc/05_prebivalstvo/40_selitve/20_05N32_soc_ek_znac_odsel/&lang=2). This table uses multirow cells, forcing us to use `html_table` with the parameter `fill = TRUE`.
+
+```{r, echo = TRUE, message=FALSE, warning=FALSE}
+library(rvest)
+tab <- file("data.html") %>% read_html(encoding = "Windows-1250") %>%
+  html_node(xpath = "//table") %>% html_table(fill = TRUE)
+cols <- c("year", "country", "citizenship","sex", "status", "number")
+colnames(tab) <- cols
+```
+
+Let us see how the imported table looks like.
+
+```{r, echo = TRUE}
+tab %>% head(10)
+```
+
+Although the multirow cells appeared in the beginning of each row, `html_table` put `NA` values to the end of each row. We must therefore swap the order of `NA` and non-`NA` cells in each row, so we can use `fill` from the `tidyr` library to fill in the missing values.
+
+```{r}
+library(tidyr)
+tab <- tab %>% apply(1, . %>% { c(.[is.na(.)], .[!is.na(.)]) }) %>%
+  t() %>% data.frame() %>% fill(1:4)
+colnames(tab) <- cols
+tab %>% head(10)
+```
