@@ -11,5 +11,5 @@ This was true for `rvest` version `0.3.1`. In version `0.3.2`, `html_table` appa
 
 This repository provides two notebooks illustrating the following
 
-* [the documented behaviour of `0.3.1`](rvest-0.3.1.nb.html), which requires some further work to properly organize the data, and
-* [the new behaviour of `0.3.2`](rvest-0.3.2.nb.html), which leads to data that cannot be easily transformed into a well-behaved form.
+* [the documented behaviour of `0.3.1`](https://rawgit.com/jaanos/rvest-table-fill/master/rvest-0.3.1.nb.html), which requires some further work to properly organize the data, and
+* [the new behaviour of `0.3.2`](https://rawgit.com/jaanos/rvest-table-fill/master/rvest-0.3.2.nb.html), which leads to data that cannot be easily transformed into a well-behaved form.
