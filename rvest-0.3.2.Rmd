@@ -1,5 +1,5 @@
 ---
-title: "Handling ugly HTML tables with rvest 0.3.1"
+title: "Handling ugly HTML tables with rvest 0.3.2"
 output:
   html_notebook: default
 ---
@@ -20,12 +20,4 @@ Let us see how the imported table looks like.
 tab
 ```
 
-Although the multirow cells appeared in the beginning of each row, `html_table` put `NA` values to the end of each row. We must therefore swap the order of `NA` and non-`NA` cells in each row, so we can use `fill` from the `tidyr` library to fill in the missing values.
-
-```{r}
-library(tidyr)
-tab <- tab %>% apply(1, . %>% { c(.[is.na(.)], .[!is.na(.)]) }) %>%
-  t() %>% data.frame() %>% fill(1:4)
-colnames(tab) <- cols
-tab
-```
+Apparently, `html_table` tries to fill in the columns, but something goes wrong and some columns are filled with wrong data.
