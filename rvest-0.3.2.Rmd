@@ -20,4 +20,4 @@ Let us see how the imported table looks like.
 tab
 ```
 
-Apparently, `html_table` tries to fill in the columns, but something goes wrong and some columns are filled with wrong data.
+The function `html_table` tries to fill in the columns, but something goes wrong and some cells are filled with wrong data.
