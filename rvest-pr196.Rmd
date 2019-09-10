@@ -1,10 +1,10 @@
 ---
-title: "Handling ugly HTML tables with rvest 0.3.2 + pull request #196"
+title: "Handling ugly HTML tables with rvest 0.3.4 + pull request #196"
 output:
   html_notebook: default
 ---
 
-We will use the `rvest` library to read a HTML table exported from the [Statistical Office of Slovenia](http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=05N3218S&ti=&path=../Database/Dem_soc/05_prebivalstvo/40_selitve/20_05N32_soc_ek_znac_odsel/&lang=2). This table uses multirow cells. In [pull request #196](https://github.com/hadley/rvest/pull/196), `html_table` has been patched to correctly treat such tables without using `fill = TRUE`.
+We will use the `rvest` library to read a HTML table exported from the [Statistical Office of Slovenia](http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=05N3218S&ti=&path=../Database/Dem_soc/05_prebivalstvo/40_selitve/20_05N32_soc_ek_znac_odsel/&lang=2). This table uses multirow cells. In [pull request #196](https://github.com/tidyverse/rvest/pull/196), `html_table` has been patched to correctly treat such tables without using `fill = TRUE`.
 
 ```{r, echo = TRUE, message=FALSE, warning=FALSE}
 library(rvest)
