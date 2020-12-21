@@ -1,0 +1,24 @@
+---
+title: 'Handling ugly HTML tables with rvest 0.3.6 + pull request #293'
+output:
+  html_notebook: default
+  html_document:
+    df_print: paged
+---
+
+We will use the `rvest` library to read a HTML table exported from the [Statistical Office of Slovenia](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/05N3218S.px). This table uses multirow cells. In [pull request #196](https://github.com/tidyverse/rvest/pull/293), `html_table` has been rewritten to correctly treat such tables without using `fill = TRUE`.
+
+```{r, echo = TRUE, message=FALSE, warning=FALSE}
+library(rvest)
+tab <- file("data.html") %>% read_html(encoding = "Windows-1250") %>%
+  html_node(xpath = "//table") %>% html_table() %>% { .[-nrow(.), ] }
+cols <- c("year", "country", "citizenship","sex", "status", "number")
+colnames(tab) <- cols
+```
+
+Let us see how the imported table looks like.
+
+```{r, echo = FALSE}
+tab
+```
+

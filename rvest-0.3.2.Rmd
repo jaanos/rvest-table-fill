@@ -4,7 +4,7 @@ output:
   html_notebook: default
 ---
 
-We will use the `rvest` library to read a HTML table exported from the [Statistical Office of Slovenia](http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=05N3218S&ti=&path=../Database/Dem_soc/05_prebivalstvo/40_selitve/20_05N32_soc_ek_znac_odsel/&lang=2). This table uses multirow cells, forcing us to use `html_table` with the parameter `fill = TRUE`.
+We will use the `rvest` library to read a HTML table exported from the [Statistical Office of Slovenia](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/05N3218S.px). This table uses multirow cells, forcing us to use `html_table` with the parameter `fill = TRUE`.
 
 ```{r, echo = TRUE, message=FALSE, warning=FALSE}
 library(rvest)
